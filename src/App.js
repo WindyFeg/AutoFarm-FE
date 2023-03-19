@@ -1,11 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Body from './body';
+import Header from './header';
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <div>
+    <Fragment>
+      <Header />
       <h1>Autofarm</h1>
-    </div>
+      <Body />
+    </Fragment>
+
   );
 }
 
