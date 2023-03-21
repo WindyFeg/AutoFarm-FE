@@ -4,7 +4,7 @@ function Profile(props) {
 
     return (
         <div className="profile">
-            <h3>This is profile</h3>
+            <h2>Profile</h2>
         </div>
     );
 }

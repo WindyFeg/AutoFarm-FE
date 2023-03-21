@@ -1,8 +1,15 @@
+import React from 'react';
+import Graph from './graph';
+
 function History(props) {
 
     return (
-        <div className="profile">
-            <h3>This is History</h3>
+        <div className="history">
+            <h2>History</h2>
+            <Graph />
+            {/* <Graph />
+            <Graph /> */}
+
         </div>
     );
 }
