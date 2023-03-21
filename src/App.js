@@ -1,14 +1,24 @@
 import './App.css';
-import Body from './body';
+import Body from './body/dashboard';
 import Header from './header';
 import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+import AllRoutes from './body/routes';
 
 function App() {
   return (
     <Fragment>
       <Header />
-      <h1>Autofarm</h1>
-      <Body />
+      <Routes>
+        {AllRoutes.map((route, index) => {
+          return <Route
+            key={index}
+            path={route.path}
+            element={<route.component />}
+          />
+        })
+        }
+      </Routes>
     </Fragment>
 
   );
