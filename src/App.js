@@ -1,6 +1,6 @@
 import './App.css';
 import Body from './body/dashboard';
-import Header from './header';
+import Header from './Header';
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import AllRoutes from './body/routes';

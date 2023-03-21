@@ -1,6 +1,6 @@
 import Dashboard from './dashboard/index';
-import Edit from './edit/index';
-import Error from './error/index';
+import Edit from './Edit/index';
+import Error from './Error/index';
 
 const AllRoutes = [
     { path: '/', component: Dashboard },

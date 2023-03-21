@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Profile from "./profile";
-import History from "./history";
+import Profile from "./Profile";
+import History from "./History";
 
 function Body() {
 
