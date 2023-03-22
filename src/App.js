@@ -4,6 +4,7 @@ import Header from './Header';
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import AllRoutes from './body/routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
