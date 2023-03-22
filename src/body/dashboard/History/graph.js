@@ -18,14 +18,28 @@ ChartJS.register(
 
 const graphData = [2, 3, 4.4, 1, 2, 4.5, 3, 2, 1, 2];
 
-function Graph() {
+function Graph(props) {
+
+    let graphColor;
+    switch (props.type) {
+        case "irrigation":
+            graphColor = "#007deb";
+            break;
+        case "lighting":
+            graphColor = "#95c842";
+            break;
+        default:
+            graphColor = "#e7a336";
+    }
+
+
     const data = {
         labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
         datasets: [{
             data: graphData,
             backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            pointBorderColor: '#007bff',
+            borderColor: graphColor,
+            pointBorderColor: graphColor,
             pointBorderWidth: 1,
             tension: 0.2
         }]

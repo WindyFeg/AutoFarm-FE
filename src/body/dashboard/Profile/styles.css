@@ -2,25 +2,27 @@
   font-family: 'Montserrat', sans-serif;
   position: relative;
 }
-.dropdown{
-  
-}
-#dropdown-basic{
+
+.dropdown {}
+
+#dropdown-basic {
   background-color: white;
-  color:black;
+  color: black;
   width: fit-content;
   font-weight: 500;
   border: none;
   margin-left: 20px;
   font-size: 20px;
 }
-#dropdown-basic:hover{
+
+#dropdown-basic:hover {
   background-color: lightgray;
-  
+
 }
 
-#edit-button, #create-button{
-  
+#edit-button,
+#create-button {
+
   margin-top: 10px;
   height: auto;
   width: fit-content;
@@ -28,33 +30,47 @@
   border: none;
   size: 0cm;
 }
+
 #edit-button {
   margin-left: 10px;
 }
 
 .profile {
-  flex: 50%;
+  /* flex: 50%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 50%;
-  padding-left: 50px;
+  padding-left: 50px; */
+  width: 40%;
 }
+
+.profile h2 {
+  display: inline-block;
+}
+
+.dropdown {
+  display: inline-block;
+}
+
 .irrigation {
   margin: 10px;
   background-color: #007DEB;
   display: flex;
 }
+
 .lighting {
   margin: 10px;
   background-color: #95C842;
   display: flex;
 }
-.temperature{  
+
+.temperature {
   margin: 10px;
   background-color: #E7A336;
   display: flex;
 }
+
 .title {
   font-size: 30px;
   font-weight: 500;
@@ -64,33 +80,39 @@
   border-right: 1px solid white;
   padding-top: 10px;
 }
+
 .state {
-  padding-top: 10px;  
+  padding-top: 10px;
   font-weight: 500;
   color: white;
   font-size: 30px;
-  flex: 40%;  
+  flex: 40%;
   text-align: center;
 }
-.merit{
+
+.merit {
   display: inline-block;
   font-weight: 1000;
   font-size: 50px;
   text-align: start;
 }
-.unit{
+
+.unit {
   display: inline-block;
   font-size: 15px;
 }
-.infor{
+
+.infor {
   padding-bottom: 10px;
 }
-.calendar{
+
+.calendar {
   font-size: 15px;
-  padding-top: 20px ;
+  padding-top: 20px;
   font-weight: 400;
 }
-.group-button{
+
+.group-button {
   display: inline-block;
   text-align: end;
 }
