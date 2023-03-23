@@ -115,3 +115,13 @@
   display: inline-block;
   text-align: end;
 }
+.dropdown, select{
+  border: none;
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10%;
+}
+
