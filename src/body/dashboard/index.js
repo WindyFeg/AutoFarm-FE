@@ -4,7 +4,7 @@ import History from "./History";
 
 function Body() {
     const myStyle = {
-        paddingLeft: '30px',
+        paddingLeft: '10px',
         flexWrap: 'wrap',
         display: 'flex',
         justifyContent: 'flex-start',

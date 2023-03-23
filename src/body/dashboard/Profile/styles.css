@@ -2,9 +2,6 @@
   font-family: 'Montserrat', sans-serif;
   position: relative;
 }
-.dropdown{
-  
-}
 #dropdown-basic{
   background-color: white;
   color:black;
@@ -38,20 +35,20 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 50%;
-  padding-left: 50px;
+  padding-left: 25px;
 }
 .irrigation {
-  margin: 10px;
+  margin: 5px;
   background-color: #007DEB;
   display: flex;
 }
 .lighting {
-  margin: 10px;
+  margin: 5px;
   background-color: #95C842;
   display: flex;
 }
 .temperature{  
-  margin: 10px;
+  margin: 5px;
   background-color: #E7A336;
   display: flex;
 }
