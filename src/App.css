@@ -68,6 +68,7 @@
   }
 
 
+
   /*$ History */
 
   .graphbox {
@@ -99,4 +100,27 @@
 
   .cardContainer {
     width: 100%;
+  }
+
+  .editIrrigation {
+    margin: 5px;
+    background-color: #007DEB;
+    display: flex;
+  }
+
+  .editLighting {
+    margin: 5px;
+    background-color: #95C842;
+    display: flex;
+  }
+
+  .editTemperature {
+    margin: 10px;
+    background-color: #E7A336;
+    display: flex;
+  }
+
+  .statefont {
+    font-size: 14px;
+    font-weight: 300;
   }

@@ -6,7 +6,7 @@ function History(props) {
 
     return (
         <div className="history" >
-            <h2>History</h2>
+            <h2 className='bodylabel'>History</h2>
             {cardType.map((type) => {
                 return <Graph type={type} />
             })}

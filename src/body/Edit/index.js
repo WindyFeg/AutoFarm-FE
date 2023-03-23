@@ -2,7 +2,7 @@ import ProfileManager from "./editprofilemanager";
 import Card from "./editcard";
 
 function Edit() {
-    const cardType = ["irrigation", "lighting", "temperature"]
+    const cardType = ["editIrrigation", "editLighting", "editTemperature"]
 
     return (
         <div className="editProfile ">
