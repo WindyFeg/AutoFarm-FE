@@ -7,6 +7,7 @@ const AllRoutes = [
     { path: '/edit', component: Edit },
     { path: '/*', component: Error }
 
+
 ]
 
 export default AllRoutes;

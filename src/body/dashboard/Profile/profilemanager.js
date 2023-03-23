@@ -1,9 +1,15 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import { Fragment } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./styles.css";
 
 function ProfileManager() {
+    const navigate = useNavigate()
+
+    function createNewProfile() {
+        navigate("/edit");
+    }
 
     return (
         <Fragment>
@@ -22,7 +28,7 @@ function ProfileManager() {
                 <Button id="edit-button" variant="success" size="sm">
                     Edit profile
                 </Button>{" "}
-                <Button id="create-button" variant="success" size="sm">
+                <Button id="create-button" variant="success" size="sm" onClick={() => createNewProfile()}>
                     New profile
                 </Button>
             </div>
