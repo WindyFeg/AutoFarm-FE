@@ -5,7 +5,7 @@ function History(props) {
     const cardType = ["irrigation", "lighting", "temperature"]
 
     return (
-        <div className="history">
+        <div className="history" >
             <h2>History</h2>
             {cardType.map((type) => {
                 return <Graph type={type} />

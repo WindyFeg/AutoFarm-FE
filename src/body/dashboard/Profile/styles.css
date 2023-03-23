@@ -3,7 +3,6 @@
   position: relative;
 }
 
-.dropdown {}
 
 #dropdown-basic {
   background-color: white;
@@ -54,13 +53,13 @@
 }
 
 .irrigation {
-  margin: 10px;
+  margin: 5px;
   background-color: #007DEB;
   display: flex;
 }
 
 .lighting {
-  margin: 10px;
+  margin: 5px;
   background-color: #95C842;
   display: flex;
 }
@@ -116,3 +115,13 @@
   display: inline-block;
   text-align: end;
 }
+.dropdown, select{
+  border: none;
+  height: fit-content;
+  width: fit-content;
+  background-color: white;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10%;
+}
+
