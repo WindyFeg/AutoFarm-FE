@@ -1,18 +1,21 @@
-import "./styles.css";
-import ProfileHeader from "./header.js";
-import Irrigation from "./irrigation.js";
-import Lighting from "./lighting";
-import Temperature from "./temperature";
-import Header from "./header.js";
+import ProfileManager from "./profilemanager";
+import Card from "./card";
+
 
 function Profile(props) {
+  const cardType = ["irrigation", "lighting", "temperature"]
+
   return (
-    <div className="profile container ">
-      <ProfileHeader />
-      <Irrigation />
-      <Lighting />
-      <Temperature />
+    <div className="profile ">
+      <h2>Profile:</h2>
+      <ProfileManager />
+      <div>
+        {cardType.map((type) => {
+          return <Card type={type} />
+        })}
+      </div>
     </div>
+
   );
 }
 export default Profile;
