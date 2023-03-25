@@ -96,6 +96,7 @@
 .editState {
   flex: 70%;
   text-align: unset;
+  margin-left: 4rem;
 }
 
 .merit {

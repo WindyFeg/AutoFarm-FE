@@ -124,3 +124,24 @@
     font-size: 14px;
     font-weight: 300;
   }
+
+  .stateinput {
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.49);
+    background-color: transparent;
+    color: #FFFFFF;
+    margin: 0.5rem;
+
+  }
+
+  .dropdown--state {
+    background-color: transparent;
+  }
+
+  .dropdown--state select {
+    background-color: transparent;
+    color: #FFFFFF;
+    font: 1em sans-serif;
+    font-family: 'Montserrat', sans-serif;
+  }

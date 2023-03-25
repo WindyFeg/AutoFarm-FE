@@ -2,7 +2,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Fragment } from "react";
 import { useState } from 'react';
 
-function EditState() {
+function EditState(props) {
     const [mode, setMode] = useState('');
 
     const handleDropdownChange = (event) => {
@@ -28,18 +28,23 @@ function EditState() {
         ALERT RANGE: TEMP LESS THAN <input className="stateinput" /> OR TEMP GREATER THAN <input className="stateinput" />
     </div>
 
+    const statePalette = {
+        "editTemperature": Temperature,
+        "editIrrigation": Irrigation,
+        "editLighting": Lighting,
+    }
+
     return (
         <Fragment>
-            <div className="dropdown">
+            <div className="dropdown--state">
                 <select value={mode} onChange={handleDropdownChange}>
                     <option value="Automatic"><Dropdown.Item href="#/action-1">Automatic</Dropdown.Item></option>
                     <option value="Manual"><Dropdown.Item href="#/action-2">Manual</Dropdown.Item></option>
                 </select>
             </div>
-            {Irrigation}
+
+            {statePalette[props.type]}
             {ActiveTime}
-            {Lighting}
-            {Temperature}
         </Fragment>
     );
 }

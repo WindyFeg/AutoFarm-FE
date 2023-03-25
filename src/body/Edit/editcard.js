@@ -23,7 +23,7 @@ function EditCard(props) {
                 </div>
             </div>
             <div className="state editState">
-                <EditState />
+                <EditState type={props.type} />
             </div>
         </div>
     )
