@@ -16,9 +16,9 @@ ChartJS.register(
     Tooltip
 );
 
-const graphData = [2, 3, 4.4, 1, 2, 4.5, 3, 2, 1, 2];
-
 function Graph(props) {
+
+    const graphData = props.data;
 
     let graphColor;
     switch (props.type) {
@@ -56,7 +56,6 @@ function Graph(props) {
                 grid: {
                     display: false
                 }
-
             },
             y: {
                 // min: Math.min(...graphData),
@@ -70,7 +69,6 @@ function Graph(props) {
                     // borderDash: [2, 5]
                 }
             }
-
         },
         animation: {
             duration: 1000,
@@ -84,9 +82,6 @@ function Graph(props) {
         },
         responsive: true,
         maintainAspectRatio: false,
-        // height: '2x',
-        // width: '2px',
-
     }
 
 
@@ -96,8 +91,6 @@ function Graph(props) {
                 className='linegraph'
                 data={data}
                 options={options}
-            // height={200}
-            // width={400}
             />
         </div >
     );
