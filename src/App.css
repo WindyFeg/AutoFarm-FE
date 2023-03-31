@@ -46,6 +46,11 @@
     padding: 1rem;
   }
 
+  .custom--state {
+    display: inline;
+    margin-left: 5px;
+  }
+
   .header_btn {
     /* Auto layout */
     border: none;

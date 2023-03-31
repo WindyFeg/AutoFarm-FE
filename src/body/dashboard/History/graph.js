@@ -61,7 +61,7 @@ function Graph(props) {
                 // min: Math.min(...graphData),
                 // max: Math.max(...graphData),
                 ticks: {
-                    stepSize: (Math.max(...graphData) - Math.min(...graphData)) / 2,
+                    stepSize: ((Math.max(...graphData) - Math.min(...graphData)) / 2).toFixed(2),
                     callback: (value) => value + "℃"
                 },
                 gird: {
