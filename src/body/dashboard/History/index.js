@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Graph from './graph';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState, } from 'react';
 
 function History(props) {
     const cardType = ["humid_Dirt", "humid_Air", "temperature"]
-    const [Loading, setLoading] = useState(true)
     const [history, setData] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3001/data/history')
-            .then(response => {
-                setData(response.data)
-                setLoading(false)
-            })
-            .catch(err => console.log(err))
-
-    }, [])
+        setData(props.history)
+    }, [props.history])
 
     function historySets(type) {
+        console.log(history)
+        if (history.err !== undefined) {
+            console.log("Database Error!")
+            return [4, 0, 4]
+        }
         if (type === "humid_Dirt") {
             return history.map(obj => obj.humi_dirt);
         }
@@ -30,18 +27,16 @@ function History(props) {
         }
     }
 
-
     return (
         <div className="history" >
             <h2 className='bodylabel'>History</h2>
-            {Loading ? <div>Loading...</div> :
-                cardType.map((type) => {
-                    return <Graph
-                        type={type}
-                        history={historySets(type)}
-                        key={type}
-                    />
-                })}
+            {cardType.map((type) => {
+                return <Graph
+                    type={type}
+                    history={historySets(type)}
+                    key={type}
+                />
+            })}
 
         </div>
     );

@@ -1,22 +1,59 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Profile from "./Profile";
 import History from "./History";
 import axios from "axios";
 
 function Body() {
 
-    const [realTimeData, setRealTimeData] = useState([])
+    const [realTimeData, setRealTimeData] = useState({})
+    const [Loading, setLoading] = useState(true)
+    const [history, setData] = useState([])
+
+    const fetchRealTimeData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/data/getOne');
+            setRealTimeData(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const fetchHistory = async () => {
+        const response = await axios.get('http://localhost:3001/data/history')
+        setData(response.data)
+        setLoading(false)
+    }
 
     useEffect(() => {
-        axios.get('http://localhost:3001/data/getOne')
-            .then(response => setRealTimeData(response.data))
-            .catch(err => console.log(err))
+        fetchHistory()
+        const intervalId = setInterval(fetchRealTimeData, 5000);
+        return () => clearInterval(intervalId);
     }, [])
+
+    useEffect(() => {
+        setData(prevHistory => {
+            let temp = [...prevHistory];
+            temp.unshift(realTimeData);
+            temp.pop();
+            return temp;
+        });
+    }, [realTimeData]);
+
+    const Load = <Fragment>
+        <h2 className='bodylabel'>History</h2>
+        <div>loading...</div>
+    </Fragment>
 
     return (
         <div className="body" >
             <Profile realTimeData={realTimeData} />
-            <History realTimeData={realTimeData} />
+            {Loading ?
+                Load
+                :
+                <History
+                    history={history}
+                />
+            }
         </div>
     )
 }

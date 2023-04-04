@@ -21,12 +21,10 @@ function ProfileManager() {
         <Fragment>
             <div className="dropdown">
                 <select value={selectedValue} onChange={handleDropdownChange}>
-                    <option value="">
-                        Default
-                    </option>
-                    <option value="Automatic"><Dropdown.Item href="#/action-1">Automatic</Dropdown.Item></option>
-                    <option value="Manual"><Dropdown.Item href="#/action-2">Manual</Dropdown.Item></option>
-                    <option value="Something else"><Dropdown.Item href="#/action-3">Something else</Dropdown.Item></option>
+                    <option value="">Default</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Something else">Something else</option>
                 </select>
             </div>
             <div className="group-button mx-auto">
@@ -39,20 +37,6 @@ function ProfileManager() {
             </div>
         </Fragment>
 
-
-        // const [selectedValue, setSelectedValue] = useState('');
-
-        // const handleDropdownChange = (event) => {
-        //   setSelectedValue(event.target.value);
-        // };
-
-        // return (
-        //   <select value={selectedValue} onChange={handleDropdownChange}>
-        //     <option value="">--Please choose an option--</option>
-        //     <option value="option1">Option 1</option>
-        //     <option value="option2">Option 2</option>
-        //     <option value="option3">Option 3</option>
-        //   </select>
     );
 }
 

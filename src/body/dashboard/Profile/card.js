@@ -8,7 +8,7 @@ function Card(props) {
         <div className="title">
             {capitalizeFirstLetter(props.type)}
             <div className="infor">
-                <div className="merit"> 37</div>
+                <div className="merit"> {props.realTimeData === undefined ? <>0.00</> : props.realTimeData}</div>
                 <div className="unit">
                     {
                         props.type === "humid_Dirt" ? "ml/m2" :
