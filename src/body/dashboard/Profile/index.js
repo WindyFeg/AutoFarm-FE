@@ -3,7 +3,7 @@ import Card from "./card";
 
 
 function Profile(props) {
-  const cardType = ["irrigation", "lighting", "temperature"]
+  const cardType = ["humid_Dirt", "humid_Air", "temperature"]
 
   return (
     <div className="profile ">
@@ -11,7 +11,10 @@ function Profile(props) {
       <ProfileManager />
       <div>
         {cardType.map((type) => {
-          return <Card type={type} />
+          return <Card
+            type={type}
+            key={type}
+          />
         })}
       </div>
     </div>

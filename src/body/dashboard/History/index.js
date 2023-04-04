@@ -4,25 +4,29 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 function History(props) {
-    const cardType = ["irrigation", "lighting", "temperature"]
-
-    const [data, setData] = useState([])
+    const cardType = ["humid_Dirt", "humid_Air", "temperature"]
+    const [Loading, setLoading] = useState(true)
+    const [history, setData] = useState([])
 
     useEffect(() => {
         axios.get('http://localhost:3001/data/history')
-            .then(response => setData(response.data))
+            .then(response => {
+                setData(response.data)
+                setLoading(false)
+            })
             .catch(err => console.log(err))
+
     }, [])
 
-    function datasets(type) {
-        if (type === "irrigation") {
-            return data.map(obj => obj.humi_dirt);
+    function historySets(type) {
+        if (type === "humid_Dirt") {
+            return history.map(obj => obj.humi_dirt);
         }
-        else if (type === "lighting") {
-            return data.map(obj => obj.humi);
+        else if (type === "humid_Air") {
+            return history.map(obj => obj.humi);
         }
         else {
-            return data.map(obj => obj.temp);
+            return history.map(obj => obj.temp);
         }
     }
 
@@ -30,9 +34,14 @@ function History(props) {
     return (
         <div className="history" >
             <h2 className='bodylabel'>History</h2>
-            {cardType.map((type) => {
-                return <Graph type={type} data={datasets(type)} />
-            })}
+            {Loading ? <div>Loading...</div> :
+                cardType.map((type) => {
+                    return <Graph
+                        type={type}
+                        history={historySets(type)}
+                        key={type}
+                    />
+                })}
 
         </div>
     );

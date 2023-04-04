@@ -52,13 +52,13 @@
   display: inline-block;
 }
 
-.irrigation {
+.humid_Dirt {
   margin: 5px;
   background-color: #007DEB;
   display: flex;
 }
 
-.lighting {
+.humid_Air {
   margin: 5px;
   background-color: #95C842;
   display: flex;

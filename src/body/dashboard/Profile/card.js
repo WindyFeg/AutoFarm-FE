@@ -1,7 +1,7 @@
 function Card(props) {
 
     function capitalizeFirstLetter(str) {
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        return (str.charAt(0).toUpperCase() + str.slice(1)).replace("_", " ");
     }
 
     return (<div className={`${props.type} container-fluid`}>
@@ -11,8 +11,8 @@ function Card(props) {
                 <div className="merit"> 37</div>
                 <div className="unit">
                     {
-                        props.type === "irrigation" ? "ml/m2" :
-                            props.type === "lighting" ? "W/m2"
+                        props.type === "humid_Dirt" ? "ml/m2" :
+                            props.type === "humid_Air" ? "W/m2"
                                 : "°C"
                     }
                 </div>

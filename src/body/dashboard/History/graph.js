@@ -18,14 +18,14 @@ ChartJS.register(
 
 function Graph(props) {
 
-    const graphData = props.data;
+    const graphData = props.history;
 
     let graphColor;
     switch (props.type) {
-        case "irrigation":
+        case "humid_Dirt":
             graphColor = "#007deb";
             break;
-        case "lighting":
+        case "humid_Air":
             graphColor = "#95c842";
             break;
         default:
@@ -61,7 +61,7 @@ function Graph(props) {
                 // min: Math.min(...graphData),
                 // max: Math.max(...graphData),
                 ticks: {
-                    stepSize: ((Math.max(...graphData) - Math.min(...graphData)) / 2).toFixed(2),
+                    stepSize: ((Math.max(...graphData) - Math.min(...graphData)).toFixed(4) / 2).toFixed(4),
                     callback: (value) => value + "℃"
                 },
                 gird: {
