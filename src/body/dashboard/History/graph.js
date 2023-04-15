@@ -19,7 +19,6 @@ ChartJS.register(
 function Graph(props) {
 
     const graphData = props.history;
-
     let graphColor;
     switch (props.type) {
         case "humid_Dirt":
@@ -45,7 +44,11 @@ function Graph(props) {
         }]
 
     }
-
+    
+    let num = 3.14159265358979323846;
+    let str = num.toString();
+    let decimalIndex = str.indexOf('.');
+    let formattedNum = str.substring(0, decimalIndex + 3);
     const options = {
 
         plugins: {
@@ -61,8 +64,8 @@ function Graph(props) {
                 // min: Math.min(...graphData),
                 // max: Math.max(...graphData),
                 ticks: {
-                    stepSize: ((Math.max(...graphData) - Math.min(...graphData)).toFixed(4) / 2).toFixed(4),
-                    callback: (value) => value + "℃"
+                    stepSize: (((Math.max(...graphData) - Math.min(...graphData)) / 2.01).toFixed(2)),
+                    callback: (value) => value.toString().substring(0,value.toString().indexOf(".") + 3) + "℃"
                 },
                 gird: {
                     display: false,
