@@ -2,6 +2,18 @@ import { Fragment, useEffect, useState } from "react";
 import Profile from "./Profile";
 import History from "./History";
 import axios from "axios";
+import * as mqtt from 'mqtt/dist/mqtt'
+
+var client = mqtt.connect('http://makerzone.net',{
+    username: "popos",
+    password: "mqttserver"
+})
+var topic = 'historicalData'
+
+client.on('message', (topic, message)=>{
+    message = message.toString()
+    console.log(message)
+})
 
 function Body() {
 
