@@ -11,7 +11,6 @@ function History(props) {
     }, [props.history])
 
     function historySets(type) {
-        console.log(history)
         if (history.err !== undefined) {
             console.log("Database Error!")
             return [4, 0, 4]
