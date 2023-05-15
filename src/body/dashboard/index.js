@@ -4,35 +4,32 @@ import History from "./History";
 import axios from "axios";
 import * as mqtt from 'mqtt/dist/mqtt'
 
-
-
 function Body() {
-    var client = mqtt.connect('ws://mqtt.binhnguyen.dev',{
-    username: "popos",
-    password: "mqttserver"
-    })
-    var topic = 'historicalData'
-
-    client.on('message', (topic, message)=>{
-        message = message.toString()
-        console.log(message)
-    })
-
-    client.on('connect', ()=>{
-        client.subscribe(topic)
-    })
     const [realTimeData, setRealTimeData] = useState({})
     const [Loading, setLoading] = useState(true)
     const [history, setData] = useState([])
 
-    const fetchRealTimeData = async () => {
-        try {
-            const response = await axios.get('http://localhost:3001/data/getOne');
-            setRealTimeData(response.data);
-        } catch (error) {
-            console.log(error);
+
+    var client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
+        username: "popos",
+        password: "mqttserver"
+    })
+    var topic = 'historicalData'
+
+    client.on('message', (topic, message) => {
+        var message = message.toString()
+        var splitData = message.split(' ')
+        var temp = {
+            temp: parseFloat(splitData[0]),
+            humi: parseFloat(splitData[1]),
+            humi_dirt: parseFloat(splitData[2]),
         }
-    };
+        setRealTimeData(temp);
+    })
+
+    client.on('connect', () => {
+        client.subscribe(topic)
+    })
 
     const fetchHistory = async () => {
         const response = await axios.get('http://localhost:3001/data/history')
@@ -42,8 +39,6 @@ function Body() {
 
     useEffect(() => {
         fetchHistory()
-        const intervalId = setInterval(fetchRealTimeData, 5000);
-        return () => clearInterval(intervalId);
     }, [])
 
     useEffect(() => {
