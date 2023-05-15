@@ -4,19 +4,23 @@ import History from "./History";
 import axios from "axios";
 import * as mqtt from 'mqtt/dist/mqtt'
 
-var client = mqtt.connect('http://makerzone.net',{
-    username: "popos",
-    password: "mqttserver"
-})
-var topic = 'historicalData'
 
-client.on('message', (topic, message)=>{
-    message = message.toString()
-    console.log(message)
-})
 
 function Body() {
+    var client = mqtt.connect('ws://mqtt.binhnguyen.dev',{
+    username: "popos",
+    password: "mqttserver"
+    })
+    var topic = 'historicalData'
 
+    client.on('message', (topic, message)=>{
+        message = message.toString()
+        console.log(message)
+    })
+
+    client.on('connect', ()=>{
+        client.subscribe(topic)
+    })
     const [realTimeData, setRealTimeData] = useState({})
     const [Loading, setLoading] = useState(true)
     const [history, setData] = useState([])

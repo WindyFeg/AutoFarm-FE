@@ -8,12 +8,12 @@ function ProfileHeader() {
       <h2>Profile:</h2>
       <Dropdown className="dropdown ">
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Default
+          Automatic
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Automatic</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Manual</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">Manual</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Semi</Dropdown.Item>
+          
         </Dropdown.Menu>
       </Dropdown>
       

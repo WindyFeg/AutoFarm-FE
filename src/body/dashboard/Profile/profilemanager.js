@@ -21,10 +21,9 @@ function ProfileManager() {
         <Fragment>
             <div className="dropdown">
                 <select value={selectedValue} onChange={handleDropdownChange}>
-                    <option value="">Default</option>
                     <option value="Automatic">Automatic</option>
                     <option value="Manual">Manual</option>
-                    <option value="Something else">Something else</option>
+                    <option value="Semi">Semi</option>
                 </select>
             </div>
             <div className="group-button mx-auto">
