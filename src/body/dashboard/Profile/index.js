@@ -20,7 +20,7 @@ function Profile(props) {
   return (
     <div className="profile ">
       <h2 className="bodylabel">Profile:</h2>
-      <ProfileManager />
+      <ProfileManager  />
       <div>
         {cardType.map((type) => {
           return <Card

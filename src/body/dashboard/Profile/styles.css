@@ -27,6 +27,7 @@
   border: none;
   size: 0cm;
   border-radius: 10%;
+  margin-right: 10%;
 }
 
 .edit-button :hover {

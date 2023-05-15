@@ -18,14 +18,15 @@ function Body() {
         console.log(response.data)
     }
 
-    const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
-        username: "popos",
-        password: "mqttserver"
-    })
+
 
     useEffect(() => {
         fetchHistory()
 
+        const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
+            username: "popos",
+            password: "mqttserver"
+        })
 
         var topic = 'historicalData'
 
@@ -66,7 +67,7 @@ function Body() {
 
     return (
         <div className="body" >
-            <Profile realTimeData={realTimeData} client={client} />
+            <Profile realTimeData={realTimeData}  />
             {Loading ?
                 Load
                 :
