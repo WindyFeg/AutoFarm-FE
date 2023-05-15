@@ -19,19 +19,18 @@
 
 }
 
-#edit-button,
-#create-button {
-
+.edit-button {
   margin-top: 10px;
   height: auto;
   width: fit-content;
   font-size: 15px;
   border: none;
   size: 0cm;
+  border-radius: 10%;
 }
 
-#edit-button {
-  margin-left: 10px;
+.edit-button :hover {
+  background-color: red;
 }
 
 .profile {

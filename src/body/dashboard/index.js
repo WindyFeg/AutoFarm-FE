@@ -9,11 +9,7 @@ function Body() {
     const [history, setData] = useState([])
     var Loading = false
 
-    var client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
-        username: "popos",
-        password: "mqttserver"
-    })
-    var topic = 'historicalData'
+
 
     const fetchHistory = async () => {
         const response = await axios.get('http://localhost:3001/data/history')
@@ -22,8 +18,17 @@ function Body() {
         console.log(response.data)
     }
 
+    const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
+        username: "popos",
+        password: "mqttserver"
+    })
+
     useEffect(() => {
         fetchHistory()
+
+
+        var topic = 'historicalData'
+
         client.on('message', (topic, message) => {
             var message = message.toString()
             var splitData = message.split(' ')
@@ -61,7 +66,7 @@ function Body() {
 
     return (
         <div className="body" >
-            <Profile realTimeData={realTimeData} />
+            <Profile realTimeData={realTimeData} client={client} />
             {Loading ?
                 Load
                 :
