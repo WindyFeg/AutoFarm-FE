@@ -4,57 +4,54 @@ import { Fragment, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./styles.css";
 import { useState } from 'react';
-import * as mqtt from 'mqtt/dist/mqtt'
-import ReactDOM from 'react-dom';
+import * as mqtt from 'mqtt/dist/mqtt';
 
 function ProfileManager(props) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [selectedValue, setSelectedValue] = useState("Manual");
     const [selectedMode, setSelectedMode] = useState("medium");
-
 
     function createNewProfile() {
         navigate("/edit");
     }
 
-
     const handleDropdownChange = (event) => {
         setSelectedValue(event.target.value);
-        if (event.target.value == "Manual") {
-            ReactDOM.render(<WaterButton />, document.getElementById("func-button"));
-        }
-        else if (event.target.value == "Semi") {
-            document.getElementById("func-button").innerHTML = "<Button  class='edit-button btn btn-success'  variant='success' size='sm' >Edit</Button>";
-        }
-        console.log(event.target.value)
+        console.log(event.target.value);
     };
+
     const handleWateringMode = (event) => {
         setSelectedMode(event.target.value);
-        console.log(event.target.value)
+        console.log(event.target.value);
+    };
+
+    const handleWateringButtonClick = () => {
+        const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
+            username: "popos",
+            password: "mqttserver"
+        });
+        client.publish('profile', selectedMode);
+    };
+
+    const handleSaveButtonClick = () => {
+        const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
+            username: "popos",
+            password: "mqttserver"
+        });
+        console.log(document.getElementById("temp").value);
+        console.log(document.getElementById("humi_dirt").value);
+        client.publish("humi_dirt", toString(document.getElementById("humi_dirt").value));
     }
 
-    const WaterButton = () => {
-        return (
-            <Fragment>
-                <div className="dropdown">
-                    <select id="manual_mode" value={selectedMode} onChange={handleWateringMode}>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
-                <Button onClick={() => {
-                    const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
-                        username: "popos",
-                        password: "mqttserver"
-                    })
-                    client.publish('profile', document.getElementById("manual_mode").value)
-                }} id="edit-button" variant="success" size="sm" value="Tưới">
-                    Watering
-                </Button>
-            </Fragment>)
+    const handleAutoMode = () => {
+        const client = mqtt.connect('ws://mqtt.binhnguyen.dev', {
+            username: "popos",
+            password: "mqttserver"
+        });
+        document.getElementById("auto").innerHTML = "Auto mode is on";
+        console.log("auto");
+        client.publish("profile", "auto");
     }
-
 
     return (
         <Fragment>
@@ -66,11 +63,46 @@ function ProfileManager(props) {
                 </select>
             </div>
 
-            <div id="func-button" className="group-button mx-auto">
-                {/* <WaterButton mode="low" /> */}
-            </div>
-        </Fragment >
+            {
+                selectedValue === "Automatic" && (
+                    <div style={{ color: "green" }} id="auto">
+                        <Button onClick={handleAutoMode} id="edit-button" variant="success" size="sm" value="Tưới">
+                            Save
+                        </Button>
+                    </div>
+                )
+            }
 
+            {selectedValue === "Manual" && (
+                <Fragment>
+                    <div className="dropdown">
+                        <select id="manual_mode" value={selectedMode} onChange={handleWateringMode}>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <Button onClick={handleWateringButtonClick} id="edit-button" variant="success" size="sm" value="Tưới">
+                        Watering
+                    </Button>
+                </Fragment>
+            )}
+
+            {selectedValue === "Semi" && (
+                <Fragment>
+                    <div>
+                        Water Condition:
+                    </div>
+                    Temperature greater than
+                    <input className="inputbox semi" id="temp" type={"number"} required />
+                    Or Humid air less than
+                    <input className="inputbox semi" id="humi_dirt" type={"number"} required />
+                    <Button onClick={handleSaveButtonClick} id="edit-button" variant="success" size="sm" value="Tưới">
+                        Save
+                    </Button>
+                </Fragment>
+            )}
+        </Fragment>
     );
 }
 
