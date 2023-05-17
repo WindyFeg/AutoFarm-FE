@@ -30,6 +30,7 @@ function ProfileManager(props) {
             username: "popos",
             password: "mqttserver"
         });
+        console.log("send" + selectedMode);
         client.publish('profile', selectedMode);
     };
 
@@ -40,7 +41,7 @@ function ProfileManager(props) {
         });
         console.log(document.getElementById("temp").value);
         console.log(document.getElementById("humi_dirt").value);
-        client.publish("humi_dirt", toString(document.getElementById("humi_dirt").value));
+        client.publish("humi_dirt", document.getElementById("humi_dirt").value);
     }
 
     const handleAutoMode = () => {
@@ -95,7 +96,7 @@ function ProfileManager(props) {
                     </div>
                     Temperature greater than
                     <input className="inputbox semi" id="temp" type={"number"} required />
-                    Or Humid air less than
+                    Or Humid dirt less than
                     <input className="inputbox semi" id="humi_dirt" type={"number"} required />
                     <Button onClick={handleSaveButtonClick} id="edit-button" variant="success" size="sm" value="Tưới">
                         Save

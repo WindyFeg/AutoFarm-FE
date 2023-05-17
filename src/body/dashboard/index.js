@@ -28,7 +28,7 @@ function Body() {
             password: "mqttserver"
         })
 
-        var topic = 'historicalData'
+        var topic = 'historicaldata'
 
         client.on('message', (topic, message) => {
             var message = message.toString()
@@ -67,7 +67,7 @@ function Body() {
 
     return (
         <div className="body" >
-            <Profile realTimeData={realTimeData}  />
+            <Profile realTimeData={realTimeData} />
             {Loading ?
                 Load
                 :
